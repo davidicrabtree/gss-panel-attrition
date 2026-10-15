@@ -1,0 +1,13 @@
+check,codebook,this_file,note
+"PANSTAT 1, 2016 / 2018","809 / 1,014","809 / 1,014",
+"PANSTAT 0, 2016 / 2018",721 / 0,721 / 0,
+"PANSTAT 2, 2016 / 2018","1,261 / 1,267","1,261 / 1,267",
+"PANSTAT 33, 2016 / 2018",61 / 45,61 / 45,
+"PANSTAT 3, 2016 / 2018",15 / 22,15 / 22,
+"Baseline respondents, 2016 / 2018","2,867 / 2,348","2,867 / 2,348",
+2016 respondents invited to 2020,"2,146 (74.85%)","2,146 (74.85%)",
+"WTSSNR_2 sum, 2016 / 2018 cohort",911.5 / 911.5,911.5 / 911.5,
+"Weighted retention, 2016 cohort (%)",38.8,38.7,"Eligible respondents, baseline WTSSNR"
+"Weighted retention, 2018 cohort (%)",44.9,44.9,"Eligible respondents, baseline WTSSNR"
+"Weighted retention, overall (%)",40.4,41.5,Eligible respondents; 40.3 if out-of-scope and deceased respondents count as not retained
+2020 interviews completed on the web (%),70.8,70.3,Not reproduced; 72.0 weighted by WTSSNR_2

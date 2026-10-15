@@ -1,0 +1,15 @@
+# Data: download from NORC with python/00_download_data.py rather than from this repository.
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+
+# Quarto
+/.quarto/
+*_files/
+
+# macOS
+.DS_Store
