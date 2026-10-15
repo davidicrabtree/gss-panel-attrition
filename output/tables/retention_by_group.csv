@@ -1,0 +1,68 @@
+characteristic,group,n,reinterviewed_pct,ci_low,ci_high
+Baseline interview,2016,2070,38.7,35.8,41.7
+Baseline interview,2018,2281,44.9,42.1,47.8
+Age,18-29,737,38.2,34.0,42.5
+Age,30-44,1177,40.4,36.9,43.9
+Age,45-64,1489,42.5,39.2,45.8
+Age,65+,933,45.3,41.4,49.2
+Sex,Male,1925,41.4,38.6,44.2
+Sex,Female,2426,41.7,39.1,44.2
+Race and ethnicity,White,2817,43.8,41.4,46.1
+Race and ethnicity,Black,704,37.6,32.3,43.0
+Race and ethnicity,Hispanic,621,36.3,31.5,41.2
+Race and ethnicity,Other,194,43.5,35.0,52.0
+Education,Less than high school,485,29.6,24.0,35.1
+Education,High school,2186,39.1,36.5,41.8
+Education,Junior college,346,40.7,34.5,47.0
+Education,Bachelor's,849,48.3,44.2,52.5
+Education,Graduate,480,54.4,49.2,59.6
+Household income,Lowest third,1398,35.5,31.9,39.0
+Household income,Middle third,1386,44.1,40.7,47.6
+Household income,Highest third,1194,48.3,44.8,51.9
+Marital status,Married,1856,45.5,42.7,48.3
+Marital status,Widowed,359,35.1,29.5,40.6
+Marital status,Divorced,746,37.4,32.9,42.0
+Marital status,Separated,145,38.0,27.8,48.2
+Marital status,Never married,1242,38.3,34.9,41.7
+Housing,Owns,1712,44.1,40.9,47.2
+Housing,Rents,1100,35.5,32.1,38.9
+Housing,Other,42,31.3,17.0,45.7
+Citizenship,Born in the U.S.,3794,42.1,39.9,44.3
+Citizenship,"Citizen, born abroad",305,41.8,35.3,48.3
+Citizenship,Not a citizen,236,35.6,28.4,42.8
+Region,Northeast,702,39.2,34.3,44.2
+Region,Midwest,1005,43.3,39.2,47.4
+Region,South,1693,39.1,35.4,42.7
+Region,West,951,45.9,41.8,49.9
+Party identification,Democrat,1403,44.4,41.0,47.8
+Party identification,Independent,1807,40.3,37.3,43.3
+Party identification,Republican,958,39.4,35.8,43.0
+Party identification,Other party,129,50.6,40.2,60.9
+Political views,Liberal,1217,47.7,44.3,51.2
+Political views,Moderate,1594,39.6,36.5,42.7
+Political views,Conservative,1365,40.0,36.7,43.4
+Religious attendance,Never or almost never,1483,42.3,39.2,45.3
+Religious attendance,Yearly to monthly,1663,41.2,38.0,44.4
+Religious attendance,Weekly or more,1180,41.8,38.4,45.2
+Voted in last presidential election,Voted,2786,46.3,43.9,48.7
+Voted in last presidential election,Did not vote,1226,32.9,29.3,36.4
+Voted in last presidential election,Ineligible,269,39.1,32.5,45.6
+Vocabulary test (words of 10),0-4,575,33.9,29.3,38.5
+Vocabulary test (words of 10),5-6,1134,37.6,34.1,41.1
+Vocabulary test (words of 10),7-10,1127,47.6,43.7,51.4
+Interview language,English,4192,42.0,39.9,44.1
+Interview language,Spanish,159,31.6,22.6,40.5
+Interview mode,In person,3959,41.7,39.5,43.8
+Interview mode,Phone,380,41.6,35.4,47.9
+Baseline fieldwork phase,Initial,3727,41.2,39.1,43.3
+Baseline fieldwork phase,Nonresponse follow-up,624,42.5,37.9,47.2
+Interviewer-rated attitude,Friendly and interested,3624,43.7,41.4,45.9
+Interviewer-rated attitude,Cooperative,576,32.1,27.4,36.9
+Interviewer-rated attitude,Restless or hostile,130,28.2,20.9,35.5
+Interviewer-rated understanding,Good,3637,43.5,41.2,45.8
+Interviewer-rated understanding,Fair,612,32.2,27.5,36.9
+Interviewer-rated understanding,Poor,85,29.5,19.2,39.8
+Don't know / no answer rate,Lowest quarter,1093,45.6,41.7,49.4
+Don't know / no answer rate,Second quarter,1083,47.1,43.5,50.8
+Don't know / no answer rate,Third quarter,1087,38.6,35.0,42.2
+Don't know / no answer rate,Highest quarter,1088,34.7,31.1,38.3

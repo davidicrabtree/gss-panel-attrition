@@ -10,7 +10,9 @@ In 2020, the General Social Survey (GSS) tried to reinterview people it had firs
 python/
   00_download_data.py   Download the panel file from NORC (checked against a SHA-256 hash)
   01_prepare_data.py    Build the analysis files and check them against the codebook
-output/tables/          Results tables
+  02_who_left.py        Reinterview rates by baseline characteristics; comparison with 2006-2014
+  common.py             Paths, baseline characteristics, weighted shares, figure style
+output/                 Tables and figures
 ```
 
 ## Reproducing the analysis
