@@ -11,6 +11,9 @@ python/
   00_download_data.py   Download the panel file from NORC (checked against a SHA-256 hash)
   01_prepare_data.py    Build the analysis files and check them against the codebook
   02_who_left.py        Reinterview rates by baseline characteristics; comparison with 2006-2014
+  03_models.py          Fit five attrition models with nested cross-validation (about 15 minutes)
+  04_compare_models.py  Discrimination, calibration, and cohort transfer of the five models
+  features.py           Feature sets, held-out benchmark variables, and the item encoder
   common.py             Paths, baseline characteristics, weighted shares, figure style
 output/                 Tables and figures
 ```

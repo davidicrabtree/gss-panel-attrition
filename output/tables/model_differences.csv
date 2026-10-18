@@ -1,0 +1,5 @@
+model,auc_difference,auc_ci_low,auc_ci_high,brier_difference,brier_ci_low,brier_ci_high
+logit_pca,0.0063,-0.0012,0.0138,-0.0006,-0.002,0.0009
+penalized_logit,0.0074,-0.0082,0.022,-0.0018,-0.0047,0.0012
+random_forest,0.0156,0.0012,0.0303,-0.0031,-0.0057,-0.0005
+boosting,0.0148,-0.0,0.0302,-0.0038,-0.0063,-0.0011

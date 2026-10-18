@@ -162,3 +162,18 @@ def save_figure(fig, path: Path, title: str, subtitle: str | None = None) -> Non
         header += gap + line(10) * (subtitle.count("\n") + 1)
     fig.subplots_adjust(top=1 - (header + 0.12) / height)
     fig.savefig(path, dpi=300, facecolor="white")
+
+
+# --- Attrition models ---------------------------------------------------------------------------
+
+MODEL_LABELS = {
+    "logit_literature": "Logistic regression, literature predictors",
+    "logit_pca": "Logistic regression + questionnaire components",
+    "penalized_logit": "Penalized logistic regression, all items",
+    "random_forest": "Random forest, all items",
+    "boosting": "Gradient boosting, all items",
+}
+
+
+def load_propensities() -> pd.DataFrame:
+    return pd.read_parquet(PROCESSED / "propensities.parquet")
