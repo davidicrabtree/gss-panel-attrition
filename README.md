@@ -15,6 +15,7 @@ python/
   04_compare_models.py  Discrimination, calibration, and cohort transfer of the five models
   05_weights.py         Build 19 weighting schemes; effective sample sizes and R-indicators
   06_bias_test.py       Benchmark bias test with a cluster bootstrap (about 5 minutes)
+  07_estimates_2020.py  2020 estimates and baseline-to-2020 change under each weighting scheme
   weighting.py          Weighting schemes: NORC, raking, inverse probability, propensity classes
   features.py           Feature sets, held-out benchmark variables, and the item encoder
   common.py             Paths, baseline characteristics, weighted shares, figure style

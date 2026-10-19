@@ -1,0 +1,204 @@
+outcome,label,measure,scheme,scheme_label,estimate,ci_low,ci_high,shift_vs_norc,shift_ci_low,shift_ci_high
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,unweighted,Unweighted,32.335,29.979,34.664,1.87,0.606,3.154
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,unweighted,Unweighted,22.851,20.779,24.889,-0.46,-1.709,0.71
+liberal,Liberal (POLVIEWS 1-3),level,unweighted,Unweighted,31.334,28.964,33.71,1.11,-0.379,2.54
+conservative,Conservative (POLVIEWS 5-7),level,unweighted,Unweighted,35.818,33.333,38.198,-0.715,-2.1,0.863
+voted,Voted in last presidential election,level,unweighted,Unweighted,77.719,75.502,79.911,1.789,0.359,3.212
+very_happy,Very happy (HAPPY),level,unweighted,Unweighted,18.437,16.73,20.081,-0.709,-1.825,0.493
+good_health,Health excellent or good (HEALTH),level,unweighted,Unweighted,73.131,70.63,75.829,-1.228,-3.069,0.62
+trusts_people,Most people can be trusted (TRUST),level,unweighted,Unweighted,39.565,36.317,42.555,0.191,-1.536,2.009
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,unweighted,Unweighted,29.831,27.358,32.289,-0.198,-1.503,1.03
+death_penalty,Favors death penalty for murder (CAPPUN),level,unweighted,Unweighted,57.411,55.009,59.831,0.062,-1.656,1.767
+gun_permits,Favors gun permits (GUNLAW),level,unweighted,Unweighted,69.276,66.335,72.157,-1.199,-3.113,0.392
+legal_marijuana,Marijuana should be legal (GRASS),level,unweighted,Unweighted,70.684,68.099,73.618,-0.844,-2.521,0.875
+abortion_any_reason,Abortion for any reason (ABANY),level,unweighted,Unweighted,52.867,49.332,56.26,1.96,0.087,3.967
+confidence_science,Great deal of confidence in science (CONSCI),level,unweighted,Unweighted,44.652,41.712,47.831,0.622,-1.501,2.516
+afraid_at_night,Afraid to walk alone at night (FEAR),level,unweighted,Unweighted,36.356,33.303,39.277,0.544,-1.239,2.373
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,unweighted,Unweighted,-2.241,-4.007,-0.427,1.558,0.312,2.889
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,unweighted,Unweighted,1.457,-0.06,3.153,-0.766,-1.921,0.228
+liberal,Liberal (POLVIEWS 1-3),change,unweighted,Unweighted,-1.267,-3.523,0.935,0.95,-0.486,2.442
+conservative,Conservative (POLVIEWS 5-7),change,unweighted,Unweighted,4.551,2.447,6.733,-0.859,-2.33,0.589
+very_happy,Very happy (HAPPY),change,unweighted,Unweighted,-11.295,-13.766,-9.12,-0.124,-1.462,1.262
+good_health,Health excellent or good (HEALTH),change,unweighted,Unweighted,-2.469,-4.888,-0.085,0.938,-0.829,2.676
+trusts_people,Most people can be trusted (TRUST),change,unweighted,Unweighted,0.728,-2.036,3.396,0.27,-1.368,2.016
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,unweighted,Unweighted,4.857,3.183,6.509,1.093,-0.403,2.448
+death_penalty,Favors death penalty for murder (CAPPUN),change,unweighted,Unweighted,-3.282,-5.519,-1.232,0.904,-0.541,2.475
+gun_permits,Favors gun permits (GUNLAW),change,unweighted,Unweighted,-4.061,-6.883,-1.375,-0.743,-2.956,1.269
+legal_marijuana,Marijuana should be legal (GRASS),change,unweighted,Unweighted,5.349,3.321,7.549,-2.052,-4.023,-0.153
+abortion_any_reason,Abortion for any reason (ABANY),change,unweighted,Unweighted,0.949,-2.151,3.724,0.607,-1.139,2.436
+confidence_science,Great deal of confidence in science (CONSCI),change,unweighted,Unweighted,-3.636,-6.794,-0.435,-0.801,-2.783,1.149
+afraid_at_night,Afraid to walk alone at night (FEAR),change,unweighted,Unweighted,6.297,3.252,9.136,0.687,-1.153,2.425
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,base,Baseline weight only,30.562,28.153,32.905,0.097,-0.689,0.841
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,base,Baseline weight only,23.209,20.895,25.571,-0.102,-0.732,0.567
+liberal,Liberal (POLVIEWS 1-3),level,base,Baseline weight only,30.947,28.277,33.612,0.724,-0.083,1.543
+conservative,Conservative (POLVIEWS 5-7),level,base,Baseline weight only,36.33,33.68,39.087,-0.204,-1.023,0.682
+voted,Voted in last presidential election,level,base,Baseline weight only,76.446,73.885,79.243,0.516,-0.186,1.272
+very_happy,Very happy (HAPPY),level,base,Baseline weight only,18.989,16.93,21.249,-0.156,-0.94,0.492
+good_health,Health excellent or good (HEALTH),level,base,Baseline weight only,75.288,72.384,78.262,0.929,-0.087,2.192
+trusts_people,Most people can be trusted (TRUST),level,base,Baseline weight only,39.226,35.736,42.625,-0.148,-1.062,0.72
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,base,Baseline weight only,29.347,26.674,31.996,-0.681,-1.405,0.048
+death_penalty,Favors death penalty for murder (CAPPUN),level,base,Baseline weight only,57.407,54.683,60.24,0.059,-0.729,0.922
+gun_permits,Favors gun permits (GUNLAW),level,base,Baseline weight only,70.858,67.525,74.047,0.384,-0.57,1.305
+legal_marijuana,Marijuana should be legal (GRASS),level,base,Baseline weight only,71.99,69.044,74.918,0.462,-0.436,1.479
+abortion_any_reason,Abortion for any reason (ABANY),level,base,Baseline weight only,52.342,48.513,55.766,1.434,0.359,2.662
+confidence_science,Great deal of confidence in science (CONSCI),level,base,Baseline weight only,44.274,40.855,47.698,0.244,-0.821,1.314
+afraid_at_night,Afraid to walk alone at night (FEAR),level,base,Baseline weight only,35.537,32.177,38.816,-0.275,-1.268,0.595
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,base,Baseline weight only,-3.493,-5.542,-1.364,0.306,-0.266,0.923
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,base,Baseline weight only,2.151,0.21,4.277,-0.071,-0.567,0.444
+liberal,Liberal (POLVIEWS 1-3),change,base,Baseline weight only,-1.718,-4.356,0.847,0.499,-0.276,1.318
+conservative,Conservative (POLVIEWS 5-7),change,base,Baseline weight only,5.099,2.629,7.9,-0.311,-1.065,0.444
+very_happy,Very happy (HAPPY),change,base,Baseline weight only,-11.74,-14.399,-9.34,-0.569,-1.401,0.186
+good_health,Health excellent or good (HEALTH),change,base,Baseline weight only,-3.092,-5.914,-0.134,0.315,-0.651,1.368
+trusts_people,Most people can be trusted (TRUST),change,base,Baseline weight only,0.53,-2.969,3.851,0.072,-0.947,1.015
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,base,Baseline weight only,4.067,2.007,6.307,0.304,-0.273,0.95
+death_penalty,Favors death penalty for murder (CAPPUN),change,base,Baseline weight only,-3.6,-6.17,-1.147,0.585,-0.152,1.436
+gun_permits,Favors gun permits (GUNLAW),change,base,Baseline weight only,-3.034,-6.72,0.633,0.284,-0.675,1.283
+legal_marijuana,Marijuana should be legal (GRASS),change,base,Baseline weight only,6.491,3.752,9.346,-0.91,-1.928,0.011
+abortion_any_reason,Abortion for any reason (ABANY),change,base,Baseline weight only,0.239,-2.814,3.173,-0.103,-0.978,0.889
+confidence_science,Great deal of confidence in science (CONSCI),change,base,Baseline weight only,-3.108,-6.543,0.867,-0.273,-1.302,0.693
+afraid_at_night,Afraid to walk alone at night (FEAR),change,base,Baseline weight only,6.0,2.276,9.342,0.39,-0.692,1.34
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,norc,NORC panel weight (WTSSNR_2),30.465,28.014,32.819,0.0,0.0,0.0
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,norc,NORC panel weight (WTSSNR_2),23.311,20.95,25.625,0.0,0.0,0.0
+liberal,Liberal (POLVIEWS 1-3),level,norc,NORC panel weight (WTSSNR_2),30.224,27.584,32.77,0.0,0.0,0.0
+conservative,Conservative (POLVIEWS 5-7),level,norc,NORC panel weight (WTSSNR_2),36.534,33.763,39.399,0.0,0.0,0.0
+voted,Voted in last presidential election,level,norc,NORC panel weight (WTSSNR_2),75.93,73.329,78.764,0.0,0.0,0.0
+very_happy,Very happy (HAPPY),level,norc,NORC panel weight (WTSSNR_2),19.146,17.075,21.351,0.0,0.0,0.0
+good_health,Health excellent or good (HEALTH),level,norc,NORC panel weight (WTSSNR_2),74.358,71.177,77.546,0.0,0.0,0.0
+trusts_people,Most people can be trusted (TRUST),level,norc,NORC panel weight (WTSSNR_2),39.374,35.765,42.89,0.0,0.0,0.0
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,norc,NORC panel weight (WTSSNR_2),30.029,27.484,32.619,0.0,0.0,0.0
+death_penalty,Favors death penalty for murder (CAPPUN),level,norc,NORC panel weight (WTSSNR_2),57.348,54.438,60.201,0.0,0.0,0.0
+gun_permits,Favors gun permits (GUNLAW),level,norc,NORC panel weight (WTSSNR_2),70.474,67.032,73.969,0.0,0.0,0.0
+legal_marijuana,Marijuana should be legal (GRASS),level,norc,NORC panel weight (WTSSNR_2),71.528,68.459,74.698,0.0,0.0,0.0
+abortion_any_reason,Abortion for any reason (ABANY),level,norc,NORC panel weight (WTSSNR_2),50.907,46.999,54.556,0.0,0.0,0.0
+confidence_science,Great deal of confidence in science (CONSCI),level,norc,NORC panel weight (WTSSNR_2),44.03,40.559,47.778,0.0,0.0,0.0
+afraid_at_night,Afraid to walk alone at night (FEAR),level,norc,NORC panel weight (WTSSNR_2),35.812,32.471,39.177,0.0,0.0,0.0
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,norc,NORC panel weight (WTSSNR_2),-3.799,-5.983,-1.662,0.0,0.0,0.0
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,norc,NORC panel weight (WTSSNR_2),2.223,0.3,4.255,0.0,0.0,0.0
+liberal,Liberal (POLVIEWS 1-3),change,norc,NORC panel weight (WTSSNR_2),-2.217,-4.789,0.487,0.0,0.0,0.0
+conservative,Conservative (POLVIEWS 5-7),change,norc,NORC panel weight (WTSSNR_2),5.41,2.645,8.273,0.0,0.0,0.0
+very_happy,Very happy (HAPPY),change,norc,NORC panel weight (WTSSNR_2),-11.171,-14.058,-8.693,0.0,0.0,0.0
+good_health,Health excellent or good (HEALTH),change,norc,NORC panel weight (WTSSNR_2),-3.407,-6.541,-0.246,0.0,0.0,0.0
+trusts_people,Most people can be trusted (TRUST),change,norc,NORC panel weight (WTSSNR_2),0.458,-2.914,3.684,0.0,0.0,0.0
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,norc,NORC panel weight (WTSSNR_2),3.763,1.562,5.934,0.0,0.0,0.0
+death_penalty,Favors death penalty for murder (CAPPUN),change,norc,NORC panel weight (WTSSNR_2),-4.186,-6.909,-1.521,0.0,0.0,0.0
+gun_permits,Favors gun permits (GUNLAW),change,norc,NORC panel weight (WTSSNR_2),-3.318,-7.222,0.333,0.0,0.0,0.0
+legal_marijuana,Marijuana should be legal (GRASS),change,norc,NORC panel weight (WTSSNR_2),7.401,4.36,10.72,0.0,0.0,0.0
+abortion_any_reason,Abortion for any reason (ABANY),change,norc,NORC panel weight (WTSSNR_2),0.342,-2.988,3.416,0.0,0.0,0.0
+confidence_science,Great deal of confidence in science (CONSCI),change,norc,NORC panel weight (WTSSNR_2),-2.835,-6.55,1.216,0.0,0.0,0.0
+afraid_at_night,Afraid to walk alone at night (FEAR),change,norc,NORC panel weight (WTSSNR_2),5.61,1.94,9.037,0.0,0.0,0.0
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,raking,Raking on demographics,30.352,27.928,32.821,-0.113,-1.108,0.816
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,raking,Raking on demographics,22.598,20.357,24.92,-0.714,-1.588,0.239
+liberal,Liberal (POLVIEWS 1-3),level,raking,Raking on demographics,29.797,27.015,32.422,-0.427,-1.511,0.483
+conservative,Conservative (POLVIEWS 5-7),level,raking,Raking on demographics,36.428,33.829,39.161,-0.106,-1.075,0.982
+voted,Voted in last presidential election,level,raking,Raking on demographics,74.221,71.434,77.173,-1.709,-2.868,-0.622
+very_happy,Very happy (HAPPY),level,raking,Raking on demographics,19.106,17.093,21.346,-0.039,-0.95,0.811
+good_health,Health excellent or good (HEALTH),level,raking,Raking on demographics,73.766,70.75,76.979,-0.593,-1.707,0.668
+trusts_people,Most people can be trusted (TRUST),level,raking,Raking on demographics,36.943,33.545,40.225,-2.43,-3.64,-1.192
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,raking,Raking on demographics,29.552,26.982,32.112,-0.477,-1.358,0.484
+death_penalty,Favors death penalty for murder (CAPPUN),level,raking,Raking on demographics,57.903,55.079,60.741,0.555,-0.396,1.631
+gun_permits,Favors gun permits (GUNLAW),level,raking,Raking on demographics,70.183,66.906,73.673,-0.291,-1.473,0.69
+legal_marijuana,Marijuana should be legal (GRASS),level,raking,Raking on demographics,71.11,68.1,73.994,-0.418,-1.74,0.779
+abortion_any_reason,Abortion for any reason (ABANY),level,raking,Raking on demographics,50.947,47.313,54.279,0.04,-1.227,1.218
+confidence_science,Great deal of confidence in science (CONSCI),level,raking,Raking on demographics,42.206,38.708,45.89,-1.824,-3.275,-0.406
+afraid_at_night,Afraid to walk alone at night (FEAR),level,raking,Raking on demographics,35.993,32.509,39.314,0.181,-1.036,1.337
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,raking,Raking on demographics,-3.693,-5.968,-1.389,0.106,-0.795,0.928
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,raking,Raking on demographics,2.112,-0.011,4.213,-0.111,-0.738,0.472
+liberal,Liberal (POLVIEWS 1-3),change,raking,Raking on demographics,-2.064,-4.759,0.758,0.153,-0.757,1.081
+conservative,Conservative (POLVIEWS 5-7),change,raking,Raking on demographics,5.605,2.98,8.492,0.196,-0.688,0.976
+very_happy,Very happy (HAPPY),change,raking,Raking on demographics,-11.268,-14.169,-8.641,-0.097,-1.0,0.804
+good_health,Health excellent or good (HEALTH),change,raking,Raking on demographics,-3.423,-6.327,-0.302,-0.016,-1.055,1.051
+trusts_people,Most people can be trusted (TRUST),change,raking,Raking on demographics,0.767,-2.792,4.282,0.309,-0.856,1.306
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,raking,Raking on demographics,3.91,1.676,6.28,0.146,-0.632,0.922
+death_penalty,Favors death penalty for murder (CAPPUN),change,raking,Raking on demographics,-3.642,-6.352,-0.941,0.544,-0.325,1.556
+gun_permits,Favors gun permits (GUNLAW),change,raking,Raking on demographics,-3.466,-7.206,0.526,-0.148,-1.514,1.112
+legal_marijuana,Marijuana should be legal (GRASS),change,raking,Raking on demographics,7.058,4.194,10.124,-0.344,-1.383,0.707
+abortion_any_reason,Abortion for any reason (ABANY),change,raking,Raking on demographics,0.55,-2.642,3.521,0.207,-0.818,1.409
+confidence_science,Great deal of confidence in science (CONSCI),change,raking,Raking on demographics,-3.461,-7.255,0.775,-0.626,-1.707,0.497
+afraid_at_night,Afraid to walk alone at night (FEAR),change,raking,Raking on demographics,5.621,1.751,9.018,0.011,-1.153,1.067
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_logit_literature,"Inverse probability, literature logit",29.894,27.151,32.609,-0.571,-1.67,0.514
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_logit_literature,"Inverse probability, literature logit",22.026,19.7,24.346,-1.285,-2.0,-0.454
+liberal,Liberal (POLVIEWS 1-3),level,ipw_logit_literature,"Inverse probability, literature logit",29.521,26.767,32.212,-0.703,-1.759,0.284
+conservative,Conservative (POLVIEWS 5-7),level,ipw_logit_literature,"Inverse probability, literature logit",35.881,33.053,38.804,-0.653,-1.643,0.325
+voted,Voted in last presidential election,level,ipw_logit_literature,"Inverse probability, literature logit",72.406,69.204,75.749,-3.523,-4.706,-2.368
+very_happy,Very happy (HAPPY),level,ipw_logit_literature,"Inverse probability, literature logit",18.839,16.645,21.188,-0.307,-1.227,0.591
+good_health,Health excellent or good (HEALTH),level,ipw_logit_literature,"Inverse probability, literature logit",72.339,68.956,75.887,-2.02,-3.479,-0.52
+trusts_people,Most people can be trusted (TRUST),level,ipw_logit_literature,"Inverse probability, literature logit",36.188,32.799,39.799,-3.186,-4.336,-1.991
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,ipw_logit_literature,"Inverse probability, literature logit",28.86,26.138,31.673,-1.169,-2.151,-0.195
+death_penalty,Favors death penalty for murder (CAPPUN),level,ipw_logit_literature,"Inverse probability, literature logit",57.116,54.078,60.369,-0.232,-1.312,0.917
+gun_permits,Favors gun permits (GUNLAW),level,ipw_logit_literature,"Inverse probability, literature logit",69.827,65.922,73.672,-0.648,-2.027,0.585
+legal_marijuana,Marijuana should be legal (GRASS),level,ipw_logit_literature,"Inverse probability, literature logit",71.193,67.91,74.583,-0.335,-1.517,0.671
+abortion_any_reason,Abortion for any reason (ABANY),level,ipw_logit_literature,"Inverse probability, literature logit",50.616,46.741,54.226,-0.291,-1.774,1.168
+confidence_science,Great deal of confidence in science (CONSCI),level,ipw_logit_literature,"Inverse probability, literature logit",42.248,38.614,46.05,-1.782,-3.092,-0.475
+afraid_at_night,Afraid to walk alone at night (FEAR),level,ipw_logit_literature,"Inverse probability, literature logit",36.692,33.022,40.485,0.88,-0.496,2.283
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,ipw_logit_literature,"Inverse probability, literature logit",-3.651,-5.934,-1.288,0.148,-0.598,0.95
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,ipw_logit_literature,"Inverse probability, literature logit",1.929,-0.219,4.101,-0.294,-0.954,0.333
+liberal,Liberal (POLVIEWS 1-3),change,ipw_logit_literature,"Inverse probability, literature logit",-2.271,-5.037,0.646,-0.054,-1.112,1.04
+conservative,Conservative (POLVIEWS 5-7),change,ipw_logit_literature,"Inverse probability, literature logit",5.823,3.166,8.837,0.413,-0.411,1.332
+very_happy,Very happy (HAPPY),change,ipw_logit_literature,"Inverse probability, literature logit",-10.702,-13.613,-8.08,0.469,-0.527,1.448
+good_health,Health excellent or good (HEALTH),change,ipw_logit_literature,"Inverse probability, literature logit",-3.88,-6.935,-0.718,-0.473,-1.591,0.835
+trusts_people,Most people can be trusted (TRUST),change,ipw_logit_literature,"Inverse probability, literature logit",0.542,-2.891,3.894,0.084,-1.097,1.317
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,ipw_logit_literature,"Inverse probability, literature logit",3.388,0.356,6.365,-0.376,-1.743,0.701
+death_penalty,Favors death penalty for murder (CAPPUN),change,ipw_logit_literature,"Inverse probability, literature logit",-4.535,-7.87,-1.464,-0.349,-1.745,0.985
+gun_permits,Favors gun permits (GUNLAW),change,ipw_logit_literature,"Inverse probability, literature logit",-3.762,-8.463,0.616,-0.443,-2.284,1.163
+legal_marijuana,Marijuana should be legal (GRASS),change,ipw_logit_literature,"Inverse probability, literature logit",7.238,4.093,10.576,-0.163,-1.463,1.03
+abortion_any_reason,Abortion for any reason (ABANY),change,ipw_logit_literature,"Inverse probability, literature logit",0.489,-2.671,3.553,0.146,-0.819,1.137
+confidence_science,Great deal of confidence in science (CONSCI),change,ipw_logit_literature,"Inverse probability, literature logit",-3.65,-7.491,0.631,-0.815,-2.1,0.492
+afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_logit_literature,"Inverse probability, literature logit",5.606,1.739,9.012,-0.004,-1.217,1.149
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",29.557,26.89,32.243,-0.908,-1.917,0.2
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",23.169,20.784,25.557,-0.143,-0.963,0.796
+liberal,Liberal (POLVIEWS 1-3),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",28.614,26.046,31.268,-1.609,-2.756,-0.607
+conservative,Conservative (POLVIEWS 5-7),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",37.302,34.667,40.243,0.768,-0.288,1.797
+voted,Voted in last presidential election,level,ipw_penalized_logit,"Inverse probability, lasso/ridge",73.328,70.404,76.462,-2.602,-3.507,-1.612
+very_happy,Very happy (HAPPY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",19.13,17.083,21.38,-0.016,-1.014,0.838
+good_health,Health excellent or good (HEALTH),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",72.462,69.126,75.949,-1.896,-3.247,-0.504
+trusts_people,Most people can be trusted (TRUST),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",35.804,32.44,39.374,-3.57,-4.635,-2.464
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",30.38,27.627,33.1,0.351,-0.65,1.4
+death_penalty,Favors death penalty for murder (CAPPUN),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",58.204,55.273,61.249,0.856,-0.313,2.024
+gun_permits,Favors gun permits (GUNLAW),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",69.283,65.808,72.969,-1.191,-2.484,-0.002
+legal_marijuana,Marijuana should be legal (GRASS),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",70.748,67.506,73.72,-0.78,-2.104,0.371
+abortion_any_reason,Abortion for any reason (ABANY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",49.391,45.401,53.071,-1.517,-2.965,-0.056
+confidence_science,Great deal of confidence in science (CONSCI),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",40.885,37.301,44.63,-3.144,-4.493,-1.823
+afraid_at_night,Afraid to walk alone at night (FEAR),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",36.526,32.987,40.336,0.714,-0.482,1.887
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.208,-5.57,-0.83,0.591,-0.309,1.511
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",2.566,0.458,4.802,0.344,-0.351,1.053
+liberal,Liberal (POLVIEWS 1-3),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-1.846,-4.574,1.083,0.37,-0.834,1.557
+conservative,Conservative (POLVIEWS 5-7),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.59,2.943,8.513,0.18,-0.917,1.272
+very_happy,Very happy (HAPPY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-10.591,-13.515,-8.003,0.581,-0.488,1.604
+good_health,Health excellent or good (HEALTH),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.768,-6.86,-0.53,-0.361,-1.698,0.965
+trusts_people,Most people can be trusted (TRUST),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",1.238,-2.044,4.444,0.78,-0.333,1.839
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",4.099,1.303,7.03,0.335,-0.724,1.376
+death_penalty,Favors death penalty for murder (CAPPUN),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.018,-6.979,-1.092,0.168,-0.904,1.379
+gun_permits,Favors gun permits (GUNLAW),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.071,-8.318,0.099,-0.753,-2.162,0.617
+legal_marijuana,Marijuana should be legal (GRASS),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",7.518,4.547,10.771,0.117,-1.227,1.485
+abortion_any_reason,Abortion for any reason (ABANY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",0.529,-2.751,3.7,0.187,-1.02,1.471
+confidence_science,Great deal of confidence in science (CONSCI),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.157,-7.958,-0.198,-1.321,-2.786,0.197
+afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.587,1.847,9.159,-0.023,-1.137,1.121
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_boosting,"Inverse probability, boosting",29.912,27.339,32.476,-0.553,-1.472,0.417
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_boosting,"Inverse probability, boosting",23.378,21.046,25.727,0.066,-0.671,0.862
+liberal,Liberal (POLVIEWS 1-3),level,ipw_boosting,"Inverse probability, boosting",28.872,26.422,31.495,-1.352,-2.298,-0.516
+conservative,Conservative (POLVIEWS 5-7),level,ipw_boosting,"Inverse probability, boosting",37.214,34.534,40.092,0.681,-0.23,1.684
+voted,Voted in last presidential election,level,ipw_boosting,"Inverse probability, boosting",73.573,70.8,76.651,-2.357,-3.164,-1.415
+very_happy,Very happy (HAPPY),level,ipw_boosting,"Inverse probability, boosting",18.931,16.949,21.198,-0.215,-1.118,0.615
+good_health,Health excellent or good (HEALTH),level,ipw_boosting,"Inverse probability, boosting",73.308,70.165,76.478,-1.05,-2.04,0.183
+trusts_people,Most people can be trusted (TRUST),level,ipw_boosting,"Inverse probability, boosting",36.475,33.104,39.924,-2.898,-3.905,-1.857
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,ipw_boosting,"Inverse probability, boosting",29.872,27.193,32.59,-0.157,-1.055,0.696
+death_penalty,Favors death penalty for murder (CAPPUN),level,ipw_boosting,"Inverse probability, boosting",58.311,55.534,61.194,0.963,0.039,2.018
+gun_permits,Favors gun permits (GUNLAW),level,ipw_boosting,"Inverse probability, boosting",69.97,66.544,73.333,-0.505,-1.464,0.478
+legal_marijuana,Marijuana should be legal (GRASS),level,ipw_boosting,"Inverse probability, boosting",70.606,67.416,73.711,-0.922,-2.032,0.048
+abortion_any_reason,Abortion for any reason (ABANY),level,ipw_boosting,"Inverse probability, boosting",50.543,46.724,53.967,-0.364,-1.666,0.98
+confidence_science,Great deal of confidence in science (CONSCI),level,ipw_boosting,"Inverse probability, boosting",41.354,37.854,45.122,-2.675,-3.936,-1.397
+afraid_at_night,Afraid to walk alone at night (FEAR),level,ipw_boosting,"Inverse probability, boosting",36.392,32.785,40.047,0.58,-0.442,1.61
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,ipw_boosting,"Inverse probability, boosting",-3.422,-5.709,-1.034,0.377,-0.402,1.225
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,ipw_boosting,"Inverse probability, boosting",2.513,0.397,4.676,0.29,-0.275,0.882
+liberal,Liberal (POLVIEWS 1-3),change,ipw_boosting,"Inverse probability, boosting",-2.291,-5.034,0.563,-0.074,-1.015,0.837
+conservative,Conservative (POLVIEWS 5-7),change,ipw_boosting,"Inverse probability, boosting",5.891,3.267,8.778,0.481,-0.321,1.36
+very_happy,Very happy (HAPPY),change,ipw_boosting,"Inverse probability, boosting",-11.152,-13.929,-8.58,0.019,-0.954,0.956
+good_health,Health excellent or good (HEALTH),change,ipw_boosting,"Inverse probability, boosting",-3.365,-6.286,-0.229,0.042,-1.11,1.261
+trusts_people,Most people can be trusted (TRUST),change,ipw_boosting,"Inverse probability, boosting",1.073,-2.259,4.275,0.615,-0.415,1.528
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,ipw_boosting,"Inverse probability, boosting",3.946,1.507,6.507,0.183,-0.521,0.866
+death_penalty,Favors death penalty for murder (CAPPUN),change,ipw_boosting,"Inverse probability, boosting",-3.664,-6.356,-0.931,0.522,-0.315,1.448
+gun_permits,Favors gun permits (GUNLAW),change,ipw_boosting,"Inverse probability, boosting",-3.652,-7.516,0.301,-0.333,-1.431,0.76
+legal_marijuana,Marijuana should be legal (GRASS),change,ipw_boosting,"Inverse probability, boosting",6.85,4.009,10.001,-0.552,-1.661,0.467
+abortion_any_reason,Abortion for any reason (ABANY),change,ipw_boosting,"Inverse probability, boosting",1.019,-2.192,4.18,0.676,-0.399,1.775
+confidence_science,Great deal of confidence in science (CONSCI),change,ipw_boosting,"Inverse probability, boosting",-3.986,-7.644,0.039,-1.151,-2.305,0.046
+afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_boosting,"Inverse probability, boosting",5.587,1.854,8.998,-0.023,-1.051,1.11
