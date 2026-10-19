@@ -57,16 +57,23 @@ LIT, ITEMS = list(lit.columns), list(items.columns)
 # penalty only keeps estimates finite for rare categories.
 plain_logit = LogisticRegression(C=1e4, max_iter=5000)
 
+# The literature predictors are imputed, as Morgan and Lee did, rather than given missing-value
+# indicators. A few predictors are missing for a handful of people who almost all left; with
+# indicators, a nearly unpenalized logit separates them, predicts probabilities near zero, and one
+# retained respondent's weight reaches 179 times the median. Penalized and tree models keep the
+# indicators, since their regularization handles rare flags.
+literature_encoder = ItemEncoder(missing_indicators=False)
+
 MODELS = {
     "logit_literature": (
         LIT,
-        Pipeline([("encode", ItemEncoder()), ("model", plain_logit)]),
+        Pipeline([("encode", literature_encoder), ("model", plain_logit)]),
         {}),
     "logit_pca": (
         LIT + ITEMS,
         Pipeline([
             ("features", ColumnTransformer([
-                ("literature", ItemEncoder(), LIT),
+                ("literature", literature_encoder, LIT),
                 ("components", Pipeline([("encode", ItemEncoder(missing_indicators=False)),
                                          ("pca", PCA(random_state=SEED))]), ITEMS),
             ])),

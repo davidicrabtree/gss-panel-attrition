@@ -1,0 +1,20 @@
+scheme,label,effective_n,design_effect,max_over_median,min_over_median,r_indicator
+unweighted,Unweighted,1823.0,1.0,1.0,1.0,
+base,Baseline weight only,1338.674,1.362,5.567,0.31,
+norc,NORC panel weight (WTSSNR_2),1274.274,1.431,8.212,0.243,
+raking,Raking on demographics,1248.885,1.46,8.09,0.229,
+ipw_logit_literature,"Inverse probability, literature logit",1130.389,1.613,18.579,0.231,0.773
+ipw_trim_logit_literature,"Inverse probability, trimmed, literature logit",1187.035,1.536,10.831,0.231,0.773
+classes_logit_literature,"Propensity classes, literature logit",1245.502,1.464,7.653,0.254,0.773
+ipw_logit_pca,"Inverse probability, logit + components",1106.173,1.648,18.883,0.229,0.756
+ipw_trim_logit_pca,"Inverse probability, trimmed, logit + components",1152.55,1.582,12.226,0.229,0.756
+classes_logit_pca,"Propensity classes, logit + components",1238.171,1.472,7.672,0.249,0.756
+ipw_penalized_logit,"Inverse probability, lasso/ridge",1185.05,1.538,11.404,0.22,0.761
+ipw_trim_penalized_logit,"Inverse probability, trimmed, lasso/ridge",1191.139,1.53,11.418,0.221,0.761
+classes_penalized_logit,"Propensity classes, lasso/ridge",1231.195,1.481,9.536,0.281,0.761
+ipw_random_forest,"Inverse probability, random forest",1273.177,1.432,7.568,0.278,0.844
+ipw_trim_random_forest,"Inverse probability, trimmed, random forest",1277.819,1.427,7.568,0.278,0.844
+classes_random_forest,"Propensity classes, random forest",1233.167,1.478,9.256,0.239,0.844
+ipw_boosting,"Inverse probability, boosting",1258.594,1.448,8.105,0.267,0.809
+ipw_trim_boosting,"Inverse probability, trimmed, boosting",1259.641,1.447,8.105,0.267,0.809
+classes_boosting,"Propensity classes, boosting",1234.854,1.476,8.722,0.247,0.809

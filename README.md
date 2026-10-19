@@ -13,6 +13,9 @@ python/
   02_who_left.py        Reinterview rates by baseline characteristics; comparison with 2006-2014
   03_models.py          Fit five attrition models with nested cross-validation (about 15 minutes)
   04_compare_models.py  Discrimination, calibration, and cohort transfer of the five models
+  05_weights.py         Build 19 weighting schemes; effective sample sizes and R-indicators
+  06_bias_test.py       Benchmark bias test with a cluster bootstrap (about 5 minutes)
+  weighting.py          Weighting schemes: NORC, raking, inverse probability, propensity classes
   features.py           Feature sets, held-out benchmark variables, and the item encoder
   common.py             Paths, baseline characteristics, weighted shares, figure style
 output/                 Tables and figures

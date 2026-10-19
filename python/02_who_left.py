@@ -26,8 +26,8 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-from common import (BLUE, FIGURES, TABLES, characteristics, cluster_id, load_baseline,
-                    save_figure, set_plot_style, weighted_shares)
+from common import (BLUE, FIGURES, GRAY, TABLES, characteristics, cluster_id, grouped_rows,
+                    label_rows, load_baseline, save_figure, set_plot_style, weighted_shares)
 
 Z = 1.96
 
@@ -122,33 +122,6 @@ print(comparison.round(1).to_string(index=False))
 
 set_plot_style()
 FIGURES.mkdir(parents=True, exist_ok=True)
-GRAY = "0.6"
-
-
-def grouped_rows(table: pd.DataFrame, header=lambda name: name) -> pd.DataFrame:
-    """Insert a header row before each characteristic; returns rows in top-to-bottom order."""
-    out = []
-    for name, block in table.groupby("characteristic", sort=False):
-        out.append({"label": header(name), "header": True})
-        out += [{**row, "label": row["group"], "header": False} for row in block.to_dict("records")]
-    return pd.DataFrame(out)
-
-
-def label_rows(ax, rows: pd.DataFrame) -> np.ndarray:
-    """Rows run top to bottom. Groups label the y axis; each header starts at the figure's left
-    edge on its own empty row (a white box keeps reference lines from crossing it)."""
-    y = np.arange(len(rows))[::-1]
-    ax.set_yticks(y, ["" if h else lab for lab, h in zip(rows["label"], rows["header"])])
-    for yi, lab, h in zip(y, rows["label"], rows["header"]):
-        if h:
-            ax.annotate(lab, xy=(0.02, yi), xycoords=("figure fraction", "data"), ha="left",
-                        va="center", fontweight="bold", fontsize=10, color="0.15", zorder=5,
-                        bbox={"facecolor": "white", "edgecolor": "none", "pad": 1})
-    ax.grid(axis="y", visible=False)
-    ax.set_ylim(-0.7, len(rows) - 0.3)
-    return y
-
-
 # Figure 1: reinterview rates for the characteristics with the largest and most policy-relevant
 # differences, chosen to show both socioeconomic and interview-experience gradients
 SHOWN = ["Education", "Household income", "Voted in last presidential election", "Political views",

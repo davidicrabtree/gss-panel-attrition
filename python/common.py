@@ -32,6 +32,7 @@ OUT_OF_SCOPE = 3
 DECEASED = 33
 
 BLUE = "#2A6F97"
+GRAY = "0.6"
 
 
 def load_baseline() -> pd.DataFrame:
@@ -145,6 +146,31 @@ def set_plot_style() -> None:
         "xtick.color": "0.3", "ytick.color": "0.3",
         "xtick.major.size": 0, "ytick.major.size": 0,
     })
+
+
+def grouped_rows(table: pd.DataFrame, group: str = "characteristic", item: str = "group",
+                 header=lambda name: name) -> pd.DataFrame:
+    """Insert a header row before each group; returns rows in top-to-bottom order."""
+    out = []
+    for name, block in table.groupby(group, sort=False):
+        out.append({"label": header(name), "header": True})
+        out += [{**row, "label": row[item], "header": False} for row in block.to_dict("records")]
+    return pd.DataFrame(out)
+
+
+def label_rows(ax, rows: pd.DataFrame) -> np.ndarray:
+    """Rows run top to bottom. Items label the y axis; each header starts at the figure's left
+    edge on its own empty row (a white box keeps reference lines from crossing it)."""
+    y = np.arange(len(rows))[::-1]
+    ax.set_yticks(y, ["" if h else lab for lab, h in zip(rows["label"], rows["header"])])
+    for yi, lab, h in zip(y, rows["label"], rows["header"]):
+        if h:
+            ax.annotate(lab, xy=(0.02, yi), xycoords=("figure fraction", "data"), ha="left",
+                        va="center", fontweight="bold", fontsize=10, color="0.15", zorder=5,
+                        bbox={"facecolor": "white", "edgecolor": "none", "pad": 1})
+    ax.grid(axis="y", visible=False)
+    ax.set_ylim(-0.7, len(rows) - 0.3)
+    return y
 
 
 def save_figure(fig, path: Path, title: str, subtitle: str | None = None) -> None:
