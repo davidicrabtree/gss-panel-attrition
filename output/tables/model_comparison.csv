@@ -1,6 +1,6 @@
 model,label,auc,brier,log_loss,calibration_slope,mean_predicted,observed,auc_2016_trained_on_other,brier_2016_trained_on_other,auc_2018_trained_on_other,brier_2018_trained_on_other
 logit_literature,"Logistic regression, literature predictors",0.5972,0.2373,0.6674,0.7159,0.4182,0.419,0.5893,0.2412,0.5678,0.254
 logit_pca,Logistic regression + questionnaire components,0.6035,0.2367,0.6664,0.6992,0.418,0.419,0.5943,0.2415,0.5789,0.2514
-penalized_logit,"Penalized logistic regression, all items",0.6115,0.2345,0.6607,0.8025,0.4187,0.419,0.5987,0.2327,0.5837,0.2505
+penalized_logit,"Penalized logistic regression, all items",0.6115,0.2345,0.6607,0.8026,0.4187,0.419,0.5987,0.2327,0.5837,0.2505
 random_forest,"Random forest, all items",0.6198,0.2332,0.6587,1.3662,0.4211,0.419,0.6123,0.2335,0.5966,0.2426
 boosting,"Gradient boosting, all items",0.619,0.2326,0.6567,1.1059,0.419,0.419,0.6063,0.2326,0.5948,0.2455

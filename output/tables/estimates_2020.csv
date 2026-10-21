@@ -144,35 +144,35 @@ legal_marijuana,Marijuana should be legal (GRASS),change,ipw_logit_literature,"I
 abortion_any_reason,Abortion for any reason (ABANY),change,ipw_logit_literature,"Inverse probability, literature logit",0.489,-2.671,3.553,0.146,-0.819,1.137
 confidence_science,Great deal of confidence in science (CONSCI),change,ipw_logit_literature,"Inverse probability, literature logit",-3.65,-7.491,0.631,-0.815,-2.1,0.492
 afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_logit_literature,"Inverse probability, literature logit",5.606,1.739,9.012,-0.004,-1.217,1.149
-democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",29.557,26.89,32.243,-0.908,-1.917,0.2
-republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",23.169,20.784,25.557,-0.143,-0.963,0.796
-liberal,Liberal (POLVIEWS 1-3),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",28.614,26.046,31.268,-1.609,-2.756,-0.607
-conservative,Conservative (POLVIEWS 5-7),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",37.302,34.667,40.243,0.768,-0.288,1.797
-voted,Voted in last presidential election,level,ipw_penalized_logit,"Inverse probability, lasso/ridge",73.328,70.404,76.462,-2.602,-3.507,-1.612
-very_happy,Very happy (HAPPY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",19.13,17.083,21.38,-0.016,-1.014,0.838
-good_health,Health excellent or good (HEALTH),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",72.462,69.126,75.949,-1.896,-3.247,-0.504
-trusts_people,Most people can be trusted (TRUST),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",35.804,32.44,39.374,-3.57,-4.635,-2.464
-weekly_attendance,Attends religious services weekly or more (ATTEND),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",30.38,27.627,33.1,0.351,-0.65,1.4
-death_penalty,Favors death penalty for murder (CAPPUN),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",58.204,55.273,61.249,0.856,-0.313,2.024
-gun_permits,Favors gun permits (GUNLAW),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",69.283,65.808,72.969,-1.191,-2.484,-0.002
-legal_marijuana,Marijuana should be legal (GRASS),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",70.748,67.506,73.72,-0.78,-2.104,0.371
-abortion_any_reason,Abortion for any reason (ABANY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",49.391,45.401,53.071,-1.517,-2.965,-0.056
-confidence_science,Great deal of confidence in science (CONSCI),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",40.885,37.301,44.63,-3.144,-4.493,-1.823
-afraid_at_night,Afraid to walk alone at night (FEAR),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",36.526,32.987,40.336,0.714,-0.482,1.887
-democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.208,-5.57,-0.83,0.591,-0.309,1.511
-republican,"Republican, strong or not very strong (PARTYID 5-6)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",2.566,0.458,4.802,0.344,-0.351,1.053
-liberal,Liberal (POLVIEWS 1-3),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-1.846,-4.574,1.083,0.37,-0.834,1.557
-conservative,Conservative (POLVIEWS 5-7),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.59,2.943,8.513,0.18,-0.917,1.272
-very_happy,Very happy (HAPPY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-10.591,-13.515,-8.003,0.581,-0.488,1.604
-good_health,Health excellent or good (HEALTH),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.768,-6.86,-0.53,-0.361,-1.698,0.965
-trusts_people,Most people can be trusted (TRUST),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",1.238,-2.044,4.444,0.78,-0.333,1.839
-weekly_attendance,Attends religious services weekly or more (ATTEND),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",4.099,1.303,7.03,0.335,-0.724,1.376
-death_penalty,Favors death penalty for murder (CAPPUN),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.018,-6.979,-1.092,0.168,-0.904,1.379
-gun_permits,Favors gun permits (GUNLAW),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.071,-8.318,0.099,-0.753,-2.162,0.617
-legal_marijuana,Marijuana should be legal (GRASS),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",7.518,4.547,10.771,0.117,-1.227,1.485
-abortion_any_reason,Abortion for any reason (ABANY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",0.529,-2.751,3.7,0.187,-1.02,1.471
-confidence_science,Great deal of confidence in science (CONSCI),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.157,-7.958,-0.198,-1.321,-2.786,0.197
-afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.587,1.847,9.159,-0.023,-1.137,1.121
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",29.556,26.89,32.241,-0.909,-1.919,0.198
+republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_penalized_logit,"Inverse probability, lasso/ridge",23.169,20.784,25.559,-0.142,-0.963,0.795
+liberal,Liberal (POLVIEWS 1-3),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",28.615,26.046,31.267,-1.609,-2.757,-0.609
+conservative,Conservative (POLVIEWS 5-7),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",37.302,34.667,40.243,0.769,-0.287,1.797
+voted,Voted in last presidential election,level,ipw_penalized_logit,"Inverse probability, lasso/ridge",73.328,70.404,76.461,-2.602,-3.505,-1.613
+very_happy,Very happy (HAPPY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",19.129,17.082,21.379,-0.017,-1.015,0.837
+good_health,Health excellent or good (HEALTH),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",72.461,69.123,75.947,-1.897,-3.247,-0.508
+trusts_people,Most people can be trusted (TRUST),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",35.803,32.44,39.376,-3.57,-4.636,-2.464
+weekly_attendance,Attends religious services weekly or more (ATTEND),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",30.38,27.628,33.101,0.351,-0.648,1.4
+death_penalty,Favors death penalty for murder (CAPPUN),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",58.204,55.271,61.247,0.856,-0.313,2.024
+gun_permits,Favors gun permits (GUNLAW),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",69.284,65.81,72.969,-1.19,-2.482,-0.003
+legal_marijuana,Marijuana should be legal (GRASS),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",70.749,67.506,73.721,-0.779,-2.104,0.372
+abortion_any_reason,Abortion for any reason (ABANY),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",49.39,45.401,53.071,-1.517,-2.964,-0.056
+confidence_science,Great deal of confidence in science (CONSCI),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",40.885,37.299,44.629,-3.145,-4.494,-1.823
+afraid_at_night,Afraid to walk alone at night (FEAR),level,ipw_penalized_logit,"Inverse probability, lasso/ridge",36.527,32.99,40.336,0.715,-0.481,1.887
+democrat,"Democrat, strong or not very strong (PARTYID 0-1)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.209,-5.57,-0.83,0.59,-0.308,1.51
+republican,"Republican, strong or not very strong (PARTYID 5-6)",change,ipw_penalized_logit,"Inverse probability, lasso/ridge",2.567,0.459,4.803,0.344,-0.35,1.054
+liberal,Liberal (POLVIEWS 1-3),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-1.846,-4.574,1.085,0.371,-0.833,1.56
+conservative,Conservative (POLVIEWS 5-7),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.589,2.944,8.513,0.18,-0.916,1.271
+very_happy,Very happy (HAPPY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-10.591,-13.513,-8.003,0.58,-0.487,1.604
+good_health,Health excellent or good (HEALTH),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-3.77,-6.862,-0.532,-0.363,-1.7,0.963
+trusts_people,Most people can be trusted (TRUST),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",1.239,-2.044,4.444,0.781,-0.331,1.84
+weekly_attendance,Attends religious services weekly or more (ATTEND),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",4.099,1.304,7.031,0.336,-0.723,1.376
+death_penalty,Favors death penalty for murder (CAPPUN),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.017,-6.979,-1.091,0.169,-0.902,1.378
+gun_permits,Favors gun permits (GUNLAW),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.072,-8.319,0.099,-0.754,-2.163,0.616
+legal_marijuana,Marijuana should be legal (GRASS),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",7.52,4.548,10.774,0.119,-1.226,1.488
+abortion_any_reason,Abortion for any reason (ABANY),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",0.53,-2.75,3.701,0.187,-1.018,1.472
+confidence_science,Great deal of confidence in science (CONSCI),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",-4.157,-7.958,-0.2,-1.321,-2.784,0.197
+afraid_at_night,Afraid to walk alone at night (FEAR),change,ipw_penalized_logit,"Inverse probability, lasso/ridge",5.589,1.85,9.161,-0.021,-1.134,1.121
 democrat,"Democrat, strong or not very strong (PARTYID 0-1)",level,ipw_boosting,"Inverse probability, boosting",29.912,27.339,32.476,-0.553,-1.472,0.417
 republican,"Republican, strong or not very strong (PARTYID 5-6)",level,ipw_boosting,"Inverse probability, boosting",23.378,21.046,25.727,0.066,-0.671,0.862
 liberal,Liberal (POLVIEWS 1-3),level,ipw_boosting,"Inverse probability, boosting",28.872,26.422,31.495,-1.352,-2.298,-0.516

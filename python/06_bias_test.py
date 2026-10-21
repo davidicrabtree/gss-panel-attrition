@@ -12,7 +12,7 @@ zero even if attrition were completely random, because the reinterviewed are a 4
 
 Uncertainty: 1,000 bootstrap resamples of sampling units, recomputing the targets, raking, and
 propensity classes each time. Model probabilities are held fixed (refitting the models 1,000 times
-is not feasible), so the intervals understate uncertainty somewhat. Runs in about 5 minutes.
+is not feasible), so the intervals understate uncertainty somewhat. Runs in 5-10 minutes.
 
 Outputs:
   output/tables/bias_summary.csv     - mean absolute gap and effective sample size per scheme

@@ -1,0 +1,190 @@
+---
+title: "Who Leaves a Survey Panel? Machine-Learning Attrition Weights for the 2016–2020 General Social Survey Panel"
+author: "David Crabtree"
+date: last-modified
+date-format: "MMMM YYYY"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 2
+    fig-align: left
+    theme: cosmo
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 11pt
+    pdf-engine: lualatex
+    colorlinks: true
+execute:
+  echo: false
+  warning: false
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+from IPython.display import Markdown
+
+T = "output/tables/"
+checks = pd.read_csv(T + "codebook_checks.csv").set_index("check")
+rates = pd.read_csv(T + "retention_by_group.csv").set_index(["characteristic", "group"])
+then = pd.read_csv(T + "attrition_vs_2006_panels.csv").set_index(["characteristic", "group"])
+models = pd.read_csv(T + "model_comparison.csv").set_index("model")
+model_diff = pd.read_csv(T + "model_differences.csv").set_index("model")
+weights = pd.read_csv(T + "weight_summary.csv").set_index("scheme")
+bias = pd.read_csv(T + "bias_summary.csv").set_index("scheme")
+vs = pd.read_csv(T + "bias_comparisons.csv").set_index(["scheme", "reference"])
+gaps = pd.read_csv(T + "benchmark_gaps.csv").set_index(["scheme", "benchmark"])
+est = pd.read_csv(T + "estimates_2020.csv").set_index(["measure", "scheme", "outcome"])
+
+neg = lambda s: s.replace("-", "−")                         # typographic minus
+num = lambda x, d=1: neg(f"{x:.{d}f}")
+pct = lambda x, d=0: f"{x:.{d}f}%"
+ci = lambda lo, hi, d=1: neg(f"{lo:.{d}f} to {hi:.{d}f}")
+
+rate = lambda c, g: rates.loc[(c, g), "reinterviewed_pct"]
+gap = lambda b, s="base": gaps.loc[(s, b), "gap"]
+cut = lambda s: bias.loc[s, "reduction_vs_base_pct"]
+model_based = [s for s in bias.index if s.startswith(("ipw", "classes"))]
+
+def versus(scheme, reference, d=2):
+    r = vs.loc[(scheme, reference)]
+    return f"{num(r.difference, d)} points (95% interval {ci(r.ci_low, r.ci_high, d)})"
+
+def lowered(outcome, scheme="ipw_penalized_logit", interval=False):
+    """A downward shift from NORC's weight, stated as a positive number of points."""
+    r = est.loc[("level", scheme, outcome)]
+    out = num(-r.shift_vs_norc)
+    return out + f" points (95% interval {ci(-r.shift_ci_high, -r.shift_ci_low)})" if interval else out
+
+def level(outcome, scheme):
+    return pct(est.loc[("level", scheme, outcome), "estimate"], 1)
+
+shift_mean = lambda measure, scheme: (est.loc[(measure, scheme)]["shift_vs_norc"].abs().mean())
+retention_overall = float(checks.loc["Weighted retention, overall (%)", "this_file"])
+best = "ipw_penalized_logit"
+```
+
+## Summary
+
+In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only `{python} pct(retention_overall, 0)` of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area, and the person-level, model-based attrition weights the panel codebook said would follow are not in the current release. I could find no published analysis of who left this panel.
+
+I built those weights, comparing logistic regression with machine-learning models, and tested them in a way that is rarely possible: the people who left the panel still have their full baseline interview in the data, so I can check whether each set of weights makes the people who stayed look like everyone who started. **Weights from a model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth. The models that best predicted who would leave were not the ones that removed the most bias.**
+
+1. **The panel kept more voters, more trusting people, and more liberals.** At baseline, the people who stayed were `{python} num(gap("trusts_people"))` points more likely than all eligible respondents to say most people can be trusted, `{python} num(gap("voted"))` points more likely to have voted, and `{python} num(gap("liberal"))` points more likely to call themselves liberal. Dropout tracked education much more steeply than in the GSS's 2006–2014 panels.
+2. **NORC's released weight removes about a tenth of that bias; model-based weights remove a quarter to a half.** Across 15 benchmark measures held out of every model, NORC's weight closes `{python} pct(cut("norc"))` of the gap, raking on demographics `{python} pct(cut("raking"))`, and model-based weights `{python} pct(min(cut(s) for s in model_based))`–`{python} pct(max(cut(s) for s in model_based))`.
+3. **The best predictor is not the best weight.** Random forests and gradient boosting ranked dropout best, but weights from a penalized logistic regression on the full questionnaire, and from a logistic regression with principal components of it, removed the most bias. Choosing an attrition model by predictive accuracy alone would pick the wrong one.
+4. **Better weights change 2020 estimates but not estimates of change.** Relative to NORC's weight, they lower the 2020 share who say most people can be trusted by `{python} lowered("trusts_people")` points and the share with a great deal of confidence in science by `{python} lowered("confidence_science")` points. Within-person change from baseline to 2020 barely moves under any weighting.
+
+## The panel and who left
+
+```{python}
+invited = 4494
+eligible = 4351
+```
+
+The 2016–2020 GSS Panel reinterviewed every 2018 respondent and a random three-quarters of 2016 respondents, `{python} f"{invited:,}"` people in all, from August to September 2020, mostly by web. After setting aside `{python} invited - eligible` who had died, moved abroad, or entered an institution, `{python} f"{eligible:,}"` were eligible and 1,823 completed the reinterview. Following Morgan and Lee's (2020) work on the GSS's earlier panels, I treat the eligible respondents as the population the weights should represent. The analysis file reproduces the codebook's sample sizes and panel-status counts exactly (see [Reproducibility](#reproducibility)).
+
+Who came back depended strongly on socioeconomic status and on how the baseline interview went. Among respondents without a high school diploma, `{python} pct(rate("Education", "Less than high school"))` were reinterviewed; among those with a graduate degree, `{python} pct(rate("Education", "Graduate"))`. Respondents who had voted in the previous presidential election came back at `{python} pct(rate("Voted in last presidential election", "Voted"))`, nonvoters at `{python} pct(rate("Voted in last presidential election", "Did not vote"))`. Respondents whom the baseline interviewer rated "friendly and interested" came back at `{python} pct(rate("Interviewer-rated attitude", "Friendly and interested"))`, those rated restless or hostile at `{python} pct(rate("Interviewer-rated attitude", "Restless or hostile"))`.
+
+![](output/figures/retention_by_group.png){width=85%}
+
+Compared with the GSS's 2006–2014 face-to-face panels, dropout in this pandemic-era, web-first reinterview followed education far more and citizenship far less. A graduate degree lowered the chance of dropping out by `{python} num(-then.loc[("Education", "Graduate"), "gap_2016_2020"])` points relative to a high school diploma, against `{python} num(-then.loc[("Education", "Graduate"), "gap_2006_2014"])` points in the earlier panels; the gap for non-citizens shrank from `{python} num(then.loc[("Citizenship", "Not a citizen"), "gap_2006_2014"])` to `{python} num(then.loc[("Citizenship", "Not a citizen"), "gap_2016_2020"])` points. The interviewer's ratings of the baseline interview mattered about as much as before. The designs differ, so these comparisons describe the two panels rather than isolate a cause.
+
+![](output/figures/attrition_vs_2006_panels.png){width=85%}
+
+## Predicting who left
+
+I compared five models of who would be reinterviewed, each predicting from information collected at baseline:
+
+- **Logistic regression with literature predictors:** about 20 predictors modeled on Morgan and Lee's attrition models for the earlier panels (demographics, a vocabulary test, interviewer traits, and the interviewer's ratings of the interview).
+- **The same, plus principal components** of the other 355 questionnaire items, an unsupervised summary of respondents' attitudes and circumstances.
+- **Penalized (lasso or ridge) logistic regression**, a **random forest**, and **gradient boosting**, each using every baseline item asked in both years.
+
+Fifteen benchmark measures, and every item from the same question batteries, were held out of all models so that they could be used to test the weights. Every respondent's predicted probability comes from a model that never saw them (five-fold cross-validation), with tuning and all preprocessing done inside the training folds.
+
+```{python}
+rows = []
+for name, r in models.iterrows():
+    rows.append({
+        "Model": r.label,
+        "AUC": f"{r.auc:.3f}",
+        "Brier score": f"{r.brier:.3f}",
+        "Calibration slope": f"{r.calibration_slope:.2f}",
+        "AUC, other cohort": f"{r.auc_2016_trained_on_other:.3f} / {r.auc_2018_trained_on_other:.3f}",
+    })
+Markdown(pd.DataFrame(rows).to_markdown(index=False, disable_numparse=True))
+```
+
+*AUC: how well a model ranks stayers above leavers (0.5 is chance). Brier score: mean squared error of the predicted probability. Calibration slope: 1 is ideal; below 1, predictions are too extreme. Last column: trained on one baseline cohort and tested on the other (2016 / 2018).*
+
+Dropout is only weakly predictable, as it was in the earlier panels (Frankel and Hillygus 2014; Morgan and Lee 2020). The tree models rank it best, improving AUC by `{python} f"{model_diff.loc['boosting', 'auc_difference']:.3f}"` over the literature logistic regression (95% interval `{python} f"{model_diff.loc['boosting', 'auc_ci_low']:.3f}"` to `{python} f"{model_diff.loc['boosting', 'auc_ci_high']:.3f}"` for boosting), and boosting's probabilities are the best calibrated. The ordinary logistic regression's probabilities are too spread out, which matters because weights are their inverses. In an earlier version that gave the literature model an indicator for each missing predictor, a few values missing for only a handful of people who nearly all left produced near-zero probabilities and one weight 179 times the median. Imputing those values, as Morgan and Lee did, brought the largest weight down to `{python} num(weights.loc["ipw_logit_literature", "max_over_median"], 0)` times the median.
+
+The same probabilities give a summary of how unequal participation was. NORC monitored the 2020 fieldwork with R-indicators, which are 1 when everyone is equally likely to respond (Schouten, Cobben, and Bethlehem 2009). By these models' estimates the panel's R-indicator is `{python} f"{weights.r_indicator.min():.2f}"`–`{python} f"{weights.r_indicator.max():.2f}"`; the range is itself a caution, since a model that finds fewer differences reports a more representative sample.
+
+![](output/figures/calibration.png){width=100%}
+
+## Do the weights remove bias?
+
+Each model's probabilities become weights in three ways: the inverse of the probability, the same with the largest adjustments trimmed, and the average response rate within fifths of the predicted probabilities (weighting classes). I compared these with NORC's released weight, with raking to the full sample's age, sex, race and ethnicity, education, region, and baseline year, and with no attrition adjustment at all.
+
+The test uses the 15 held-out benchmarks. For each, the target is its baseline value among all eligible respondents; each weighting scheme estimates the same value from the 1,823 who stayed. The average gap measures the attrition bias the scheme leaves behind. Even random attrition would leave a gap of about `{python} num(bias.loc["random_attrition", "mean_abs_gap"])` points, since those who stayed are a 42% subsample. Intervals come from 1,000 bootstrap resamples of the survey's sampling units.
+
+![](output/figures/bias_summary.png){width=100%}
+
+Without attrition adjustment, the panel misses the baseline values by `{python} num(bias.loc["base", "mean_abs_gap"], 2)` points on average. NORC's weight lowers that to `{python} num(bias.loc["norc", "mean_abs_gap"], 2)`, a reduction its interval cannot distinguish from zero. Raking lowers it to `{python} num(bias.loc["raking", "mean_abs_gap"], 2)`. The penalized logistic regression on the full questionnaire does best, at `{python} num(bias.loc[best, "mean_abs_gap"], 2)`: `{python} versus(best, "norc")` relative to NORC's weight and `{python} versus(best, "raking")` relative to raking. Its weights cost little precision: an effective sample size (Kish 1965) of `{python} f"{bias.loc[best, 'effective_n']:,.0f}"`, against `{python} f"{bias.loc['norc', 'effective_n']:,.0f}"` for NORC's weight.
+
+The ranking among models is the main lesson. Gradient boosting predicted dropout better than the penalized regression but removed less bias (`{python} num(bias.loc["ipw_boosting", "mean_abs_gap"], 2)`), and adding principal components to the literature logistic regression barely improved its predictions but cut its remaining bias from `{python} num(bias.loc["ipw_logit_literature", "mean_abs_gap"], 2)` to `{python} num(bias.loc["ipw_logit_pca", "mean_abs_gap"], 2)`. Weights reduce bias only to the extent that the attrition model captures characteristics related to the outcomes being estimated (Little and Vartivarian 2005). Here those are political and social attitudes, which the questionnaire-wide models see and the demographic and paradata predictors largely do not. Predictive accuracy is the wrong yardstick for choosing a weighting model.
+
+![](output/figures/benchmark_gaps.png){width=85%}
+
+The weights narrow but do not close the largest gaps. Trust and voting are each still overstated by about `{python} num((gap("trusts_people", best) + gap("voted", best)) / 2, 0)` points after the best weighting, consistent with dropout that depends partly on things no baseline measure captures.
+
+## What changes in 2020
+
+The benchmark questions were asked again in 2020, so the weights can be compared where they matter to users: 2020 estimates and change since baseline. There is no true 2020 value to check against, but the bias test indicates which direction is right.
+
+![](output/figures/shifts_2020.png){width=100%}
+
+Relative to NORC's weight, the best weights lower the 2020 share who say most people can be trusted from `{python} level("trusts_people", "norc")` to `{python} level("trusts_people", best)`, the share with a great deal of confidence in science by `{python} lowered("confidence_science", interval=True)`, and the share who voted in 2016 by `{python} lowered("voted", interval=True)`. Across the 15 measures, levels move by `{python} num(shift_mean("level", best))` points on average, while within-person change moves by only `{python} num(shift_mean("change", best))`, with no shift distinguishable from zero. Attrition bias largely cancels when the same people are compared with themselves. For users of this panel, the choice of attrition weight matters for 2020 levels and much less for change.
+
+## Limitations
+
+- **The bias test checks baseline answers.** Weights that recover what panel members said in 2016 or 2018 may still miss differences that emerged by 2020, so the test supports the weights without proving them.
+- **Dropout related to unmeasured traits cannot be weighted away.** Every scheme here assumes that, given the baseline answers, who stayed is as good as random. The remaining gaps for trust and voting suggest this holds only partly.
+- **Intervals understate uncertainty somewhat.** The bootstrap holds each model's predicted probabilities fixed, since refitting the models 1,000 times was not feasible. Differences among the model-based schemes are within their intervals.
+- **Change estimates mix real change with mode.** The 2020 reinterview moved from face-to-face to mostly web interviews. That affects every weighting scheme equally, so it does not bias the comparisons here, but it does affect the change estimates themselves.
+- **Comparing with NORC's weight.** NORC weights the two baseline cohorts equally; I rescaled its weight to the cohorts' shares of the eligible sample so that the comparison reflects only its attrition adjustment.
+
+## Reproducibility {#reproducibility}
+
+The data are the public 2016–2020 GSS Panel, Release 1a (April 2022), downloaded from NORC by the pipeline and checked against a fixed hash. The analysis is in Python (pandas, scikit-learn, statsmodels); `run_all.sh` reproduces every number and figure in this report in under an hour on a laptop. The analysis file matches the panel codebook:
+
+```{python}
+shown = ["PANSTAT 1, 2016 / 2018", "PANSTAT 2, 2016 / 2018", "Baseline respondents, 2016 / 2018",
+         "2016 respondents invited to 2020", "Weighted retention, 2016 cohort (%)",
+         "Weighted retention, 2018 cohort (%)", "Weighted retention, overall (%)",
+         "2020 interviews completed on the web (%)"]
+labels = {"PANSTAT 1, 2016 / 2018": "Reinterviewed, 2016 / 2018 cohort",
+          "PANSTAT 2, 2016 / 2018": "Eligible, not reinterviewed, 2016 / 2018 cohort"}
+rows = [{"Figure": labels.get(c, c), "Codebook": checks.loc[c, "codebook"],
+         "This analysis": checks.loc[c, "this_file"]} for c in shown]
+Markdown(pd.DataFrame(rows).to_markdown(index=False, disable_numparse=True))
+```
+
+The codebook's overall retention rate of 40.4% counts deceased and out-of-scope respondents as not retained (this analysis gives 40.3% on that basis), while its cohort rates exclude them. The web share could not be reproduced from the released file.
+
+**References**
+
+Frankel, L. L., and Hillygus, D. S. (2014). Looking beyond demographics: Panel attrition in the ANES and GSS. *Political Analysis*, 22(3), 336–353.
+
+Kish, L. (1965). *Survey Sampling*. Wiley.
+
+Little, R. J. A., and Vartivarian, S. (2005). Does weighting for nonresponse increase the variance of survey means? *Survey Methodology*, 31(2), 161–168.
+
+Morgan, S. L., and Lee, J. (2020). *Six Alternative Weights that Adjust for Attrition in the 2006–2014 General Social Survey Panels*. GSS Methodological Report No. 132. NORC at the University of Chicago.
+
+Schouten, B., Cobben, F., and Bethlehem, J. (2009). Indicators for the representativeness of survey response. *Survey Methodology*, 35(1), 101–113.
+
+**Data.** Davern, M., Bautista, R., Freese, J., Morgan, S. L., and Smith, T. W. *General Social Survey 2016–2020 Panel*, Release 1a. NORC at the University of Chicago. <https://gss.norc.org>

@@ -9,9 +9,9 @@ classes_logit_literature,"Propensity classes, literature logit",2.124,1.676,3.02
 ipw_logit_pca,"Inverse probability, logit + components",1.453,1.202,2.404,49.037,1106.173
 ipw_trim_logit_pca,"Inverse probability, trimmed, logit + components",1.481,1.207,2.414,48.073,1152.55
 classes_logit_pca,"Propensity classes, logit + components",1.853,1.469,2.726,35.019,1238.171
-ipw_penalized_logit,"Inverse probability, lasso/ridge",1.348,1.106,2.271,52.729,1185.05
-ipw_trim_penalized_logit,"Inverse probability, trimmed, lasso/ridge",1.398,1.142,2.301,50.97,1191.139
-classes_penalized_logit,"Propensity classes, lasso/ridge",1.663,1.306,2.518,41.692,1231.195
+ipw_penalized_logit,"Inverse probability, lasso/ridge",1.348,1.106,2.27,52.729,1185.081
+ipw_trim_penalized_logit,"Inverse probability, trimmed, lasso/ridge",1.398,1.142,2.3,50.978,1191.121
+classes_penalized_logit,"Propensity classes, lasso/ridge",1.664,1.307,2.514,41.656,1230.647
 ipw_random_forest,"Inverse probability, random forest",1.715,1.312,2.555,39.853,1273.177
 ipw_trim_random_forest,"Inverse probability, trimmed, random forest",1.722,1.33,2.56,39.628,1277.819
 classes_random_forest,"Propensity classes, random forest",1.479,1.197,2.346,48.152,1233.167

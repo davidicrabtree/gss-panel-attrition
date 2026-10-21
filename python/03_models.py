@@ -22,7 +22,7 @@ Design:
   - Cohort transfer: train on the 2018 cohort and predict the 2016 cohort, and the reverse.
   - Models are fit without survey weights: the question is who among the sampled responded.
 
-Runs in about 15 minutes on 8 cores.
+Runs in 15-30 minutes on 8 cores.
 
 Outputs:
   data/processed/propensities.parquet - per respondent and model: out-of-fold probability (p_)
@@ -83,7 +83,8 @@ MODELS = {
         LIT + ITEMS,
         # liblinear penalizes the intercept; a large intercept_scaling makes that penalty negligible
         Pipeline([("encode", ItemEncoder()),
-                  ("model", LogisticRegression(solver="liblinear", intercept_scaling=100))]),
+                  ("model", LogisticRegression(solver="liblinear", intercept_scaling=100,
+                                               random_state=SEED))]),
         {"model__l1_ratio": [0, 1], "model__C": list(np.logspace(-3, -0.5, 6))}),
     "random_forest": (
         LIT + ITEMS,
