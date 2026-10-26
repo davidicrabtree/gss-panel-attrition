@@ -46,7 +46,9 @@ ci = lambda lo, hi, d=1: neg(f"{lo:.{d}f} to {hi:.{d}f}")
 rate = lambda c, g: rates.loc[(c, g), "reinterviewed_pct"]
 gap = lambda b, s="base": gaps.loc[(s, b), "gap"]
 cut = lambda s: bias.loc[s, "reduction_vs_base_pct"]
-model_based = [s for s in bias.index if s.startswith(("ipw", "classes"))]
+models_ipw = [s for s in bias.index if s.startswith("ipw_") and not s.startswith("ipw_trim")]
+trim_change = max(abs(bias.loc[s.replace("ipw_", "ipw_trim_"), "mean_abs_gap"] - bias.loc[s, "mean_abs_gap"])
+                  for s in models_ipw)
 
 def versus(scheme, reference, d=2):
     r = vs.loc[(scheme, reference)]
@@ -73,7 +75,7 @@ In 2020 the General Social Survey (GSS), run by NORC at the University of Chicag
 I built those weights, comparing logistic regression with machine-learning models, and tested them in a way that is rarely possible: the people who left the panel still have their full baseline interview in the data, so I can check whether each set of weights makes the people who stayed look like everyone who started. **Weights from a model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth. The models that best predicted who would leave were not the ones that removed the most bias.**
 
 1. **The panel kept more voters, more trusting people, and more liberals.** At baseline, the people who stayed were `{python} num(gap("trusts_people"))` points more likely than all eligible respondents to say most people can be trusted, `{python} num(gap("voted"))` points more likely to have voted, and `{python} num(gap("liberal"))` points more likely to call themselves liberal. Dropout tracked education much more steeply than in the GSS's 2006–2014 panels.
-2. **NORC's released weight removes about a tenth of that bias; model-based weights remove a quarter to a half.** Across 15 benchmark measures held out of every model, NORC's weight closes `{python} pct(cut("norc"))` of the gap, raking on demographics `{python} pct(cut("raking"))`, and model-based weights `{python} pct(min(cut(s) for s in model_based))`–`{python} pct(max(cut(s) for s in model_based))`.
+2. **NORC's released weight removes about a tenth of that bias; model-based weights remove a third to a half.** Across 15 benchmark measures held out of every model, NORC's weight closes `{python} pct(cut("norc"))` of the gap, raking on demographics `{python} pct(cut("raking"))`, and weights from the five attrition models `{python} pct(min(cut(s) for s in models_ipw))`–`{python} pct(max(cut(s) for s in models_ipw))`.
 3. **The best predictor is not the best weight.** Random forests and gradient boosting ranked dropout best, but weights from a penalized logistic regression on the full questionnaire, and from a logistic regression with principal components of it, removed the most bias. Choosing an attrition model by predictive accuracy alone would pick the wrong one.
 4. **Better weights change 2020 estimates but not estimates of change.** Relative to NORC's weight, they lower the 2020 share who say most people can be trusted by `{python} lowered("trusts_people")` points and the share with a great deal of confidence in science by `{python} lowered("confidence_science")` points. Within-person change from baseline to 2020 barely moves under any weighting.
 
@@ -127,7 +129,7 @@ The same probabilities give a summary of how unequal participation was. NORC mon
 
 ## Do the weights remove bias?
 
-Each model's probabilities become weights in three ways: the inverse of the probability, the same with the largest adjustments trimmed, and the average response rate within fifths of the predicted probabilities (weighting classes). I compared these with NORC's released weight, with raking to the full sample's age, sex, race and ethnicity, education, region, and baseline year, and with no attrition adjustment at all.
+Each model's probabilities become weights by inversion: a respondent the model gave a 25% chance of returning stands in for four people like them, one with a 50% chance for two. I compared these with NORC's released weight, with raking to the full sample's age, sex, race and ethnicity, education, region, and baseline year, and with no attrition adjustment at all. Two common variants made little difference and are reported only in the output tables: trimming the largest weights changed the average gap by at most `{python} num(trim_change, 1)` points, and grouping respondents into five propensity classes did worse than inverse probabilities for the logistic models.
 
 The test uses the 15 held-out benchmarks. For each, the target is its baseline value among all eligible respondents; each weighting scheme estimates the same value from the 1,823 who stayed. The average gap measures the attrition bias the scheme leaves behind. Even random attrition would leave a gap of about `{python} num(bias.loc["random_attrition", "mean_abs_gap"])` points, since those who stayed are a 42% subsample. Intervals come from 1,000 bootstrap resamples of the survey's sampling units.
 

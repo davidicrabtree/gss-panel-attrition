@@ -18,7 +18,9 @@ Outputs:
   output/tables/bias_summary.csv     - mean absolute gap and effective sample size per scheme
   output/tables/bias_comparisons.csv - differences between schemes, with 95% intervals
   output/tables/benchmark_gaps.csv   - gap for every benchmark and scheme, with 95% intervals
-  output/figures/bias_summary.png    - mean absolute gap and effective sample size by scheme
+  output/figures/bias_summary.png    - mean absolute gap and effective sample size: the schemes
+                                       without a model and inverse-probability weights from each
+                                       model (trimmed and class-based variants are in the tables)
   output/figures/benchmark_gaps.png  - each benchmark, before and after the best scheme
 """
 
@@ -146,10 +148,14 @@ print(comparisons.round(2).to_string(index=False))
 set_plot_style()
 
 # Figure 1: mean absolute gap and effective sample size, one row per scheme
-plot = summary[summary["scheme"] != "random_attrition"].assign(
-    group=lambda d: [f"Weights from the {SHORT_MODEL_NAMES[m]} model" if (m := scheme_model(s))
+# Inverse-probability weights stand for the model-based schemes: trimming changed the mean gap by
+# 0.1 points or less, and weighting classes did worse for the logistic models.
+IPW = [f"ipw_{m}" for m in SHORT_MODEL_NAMES]
+plot = summary[summary["scheme"].isin(["unweighted", "base", "norc", "raking", *IPW])].assign(
+    group=lambda d: ["Inverse-probability weights from a model" if scheme_model(s)
                      else "Without a model" for s in d["scheme"]],
-    item=lambda d: d["scheme"].map(scheme_method))
+    item=lambda d: [SHORT_MODEL_NAMES[m].capitalize() if (m := scheme_model(s))
+                    else scheme_method(s) for s in d["scheme"]])
 rows = grouped_rows(plot, group="group", item="item")
 data = rows[~rows["header"]]
 fig, (left, right) = plt.subplots(1, 2, figsize=(9, 0.25 * len(rows) + 1.2), sharey=True,
@@ -170,7 +176,7 @@ right.xaxis.set_major_formatter(lambda v, _: f"{v:,.0f}")
 right.set_xlabel("Effective sample size (of 1,823)", color="0.3")
 right.grid(axis="y", visible=False)
 cut = summary.set_index("scheme")["reduction_vs_base_pct"]
-model_cut = cut[[s for s in schemes if scheme_model(s)]]
+model_cut = cut[IPW]
 save_figure(fig, FIGURES / "bias_summary.png",
             f"Model-based weights cut the attrition gap by {model_cut.min():.0f}-{model_cut.max():.0f}%; "
             f"NORC's panel weight by {cut['norc']:.0f}%",
@@ -180,7 +186,7 @@ plt.close(fig)
 
 # Figure 2: each benchmark with no attrition adjustment and with the scheme that has the
 # smallest mean gap
-best = mean_abs.drop(["unweighted", "base"]).idxmin()
+best = mean_abs[IPW].idxmin()
 order = observed.loc["base"].abs().sort_values(ascending=False).index
 yb = np.arange(len(order))[::-1]
 fig, ax = plt.subplots(figsize=(7.5, 0.32 * len(order) + 1.3))
