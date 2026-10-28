@@ -1,4 +1,4 @@
-# Who Leaves a Survey Panel? Machine-Learning Attrition Weights for the 2016–2020 General Social Survey Panel
+# Machine-Learning Attrition Weights for the 2016–2020 General Social Survey Panel
 
 In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only 42% of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area, and the model-based attrition weights promised in the panel codebook are not in the current release. This project builds them, comparing logistic regression with penalized regression, random forests, and gradient boosting, and tests them against 15 baseline measures held out of every model. That test is possible because people who left the panel still have their baseline answers in the data, a check panel studies have long used (Fitzgerald, Gottschalk, and Moffitt 1998).
 
