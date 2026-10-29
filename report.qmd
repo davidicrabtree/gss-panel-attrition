@@ -125,13 +125,30 @@ Without attrition adjustment, the panel misses the baseline values by `{python} 
 
 Neither ranking nor calibration decided which weights worked. Gradient boosting predicted dropout best and was best calibrated, yet removed less bias (`{python} num(bias.loc["ipw_boosting", "mean_abs_gap"], 2)`) than the penalized regression; adding principal components barely improved the literature model's predictions but cut its remaining bias from `{python} num(bias.loc["ipw_logit_literature", "mean_abs_gap"], 2)` to `{python} num(bias.loc["ipw_logit_pca", "mean_abs_gap"], 2)`. Weights reduce bias only to the extent that the attrition model captures characteristics related to the outcomes being estimated (Little and Vartivarian 2005). Here those are political and social attitudes, which the questionnaire-wide models see and the demographic and paradata predictors largely do not. Pew Research Center reached a similar conclusion when weighting online opt-in samples: adding political variables to demographic weighting reduced bias far more than any more complex statistical method did (Mercer, Lau, and Kennedy 2018).
 
+::: {.content-visible when-format="html"}
 ![](output/figures/benchmark_gaps.png){width=70%}
+:::
+
+```{=latex}
+% A float, so LaTeX can put the figure at the top of a page and let the text fill the gap
+\begin{figure}[tbp]
+\includegraphics[width=0.7\linewidth]{output/figures/benchmark_gaps.png}
+\end{figure}
+```
 
 ## What changes in 2020
 
 The benchmark questions were asked again in 2020. There is no true 2020 value to check against, but the bias test indicates which direction is right.
 
-![](output/figures/shifts_2020.png){width=100%}
+::: {.content-visible when-format="html"}
+![](output/figures/shifts_2020.png){width=85%}
+:::
+
+```{=latex}
+\begin{figure}[tbp]
+\includegraphics[width=0.85\linewidth]{output/figures/shifts_2020.png}
+\end{figure}
+```
 
 Relative to NORC's weight, the best weights lower the 2020 share who say most people can be trusted from `{python} level("trusts_people", "norc")` to `{python} level("trusts_people", best)`, the share with a great deal of confidence in science by `{python} lowered("confidence_science", interval=True)`, and the share who voted in 2016 by `{python} lowered("voted", interval=True)`. Across the 15 measures, levels move by `{python} num(shift_mean("level", best))` points on average, while within-person change moves by only `{python} num(shift_mean("change", best))`, with no shift distinguishable from zero: attrition bias largely cancels when the same people are compared with themselves. For users of this panel, the choice of attrition weight matters for 2020 levels and much less for change.
 
