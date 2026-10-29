@@ -1,17 +1,19 @@
 # Machine-Learning Attrition Weights for the 2016–2020 General Social Survey Panel
 
-In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only 42% of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area, and the model-based attrition weights promised in the panel codebook are not in the current release. This project builds them, comparing logistic regression with penalized regression, random forests, and gradient boosting, and tests them against 15 baseline measures held out of every model. That test is possible because people who left the panel still have their baseline answers in the data, a check panel studies have long used (Fitzgerald, Gottschalk, and Moffitt 1998).
+In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only 42% of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area. In this project, I evaluate various methods for generating attrition weights and compare them to the weights NORC provided.
+
+I compare attrition weights from the standard logistic regression used in earlier GSS work to machine-learning methods: penalized regression, random forests, and gradient boosting. I find penalized logistic regression produces weights that remove the most bias. Because the people who left the panel still have their full baseline interview in the data, the right answer is known for any question asked before anyone left, so I can check whether each set of weights makes the people who stayed look like everyone who started. Panel studies have long used this kind of check (Fitzgerald, Gottschalk, and Moffitt 1998); to my knowledge it has not been applied to this panel's weights. These findings stand to benefit GSS users whose questions involve answers that were affected by the panel's attrition patterns.
 
 **Read the write-up:** [report.html](https://davidicrabtree.github.io/gss-panel-attrition/report.html) · [report.pdf](https://davidicrabtree.github.io/gss-panel-attrition/report.pdf)
 
 ## Findings
 
-**Weights from a model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth. The models that best predicted who would leave were not the ones that removed the most bias.**
+**Key Finding: Weights from a machine learning model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth.**
 
-1. The panel kept more voters, more trusting people, and more liberals. At baseline, those who stayed were 7.0 points more likely than all eligible respondents to say most people can be trusted and 6.7 points more likely to have voted. Dropout tracked education far more steeply than in the GSS's 2006–2014 panels (graduate degree vs. high school: 15.3 points less likely to drop out, against 3.9 earlier).
-2. Across the 15 held-out benchmarks, NORC's weight closes 11% of the gap (not distinguishable from zero), raking on demographics 29%, and inverse-probability weights from the five attrition models 37–53%. The best, a penalized logistic regression on the full questionnaire, beats raking by 0.67 points of average gap (95% interval 0.14 to 0.95) at a small cost in effective sample size.
-3. Random forests and boosting ranked dropout best (AUC 0.62 vs. 0.60), but models that see the respondents' attitudes, either directly or through principal components of the questionnaire, removed more bias. Weights work when the attrition model captures what drives the outcomes, so predictive accuracy is the wrong yardstick for choosing one, consistent with Pew Research Center's 2018 finding for opt-in samples that the choice of weighting variables matters more than the method.
-4. Better weights lower 2020 estimates of trust in people (by 3.6 points), confidence in science (3.1), and turnout (2.6) relative to NORC's weight, but leave within-person change from baseline to 2020 essentially unchanged.
+1. **Model-based weights beat both NORC's weight and demographic raking.** Across 15 benchmark measures held out of every model, NORC's weight closes 11% of the gap, raking on demographics 29%, and weights from the five attrition models 37%–53%.
+2. **The panel kept more voters, more trusting people, and more liberals.** At baseline, the people who stayed were 7.0 points more likely than all eligible respondents to say most people can be trusted, 6.7 points more likely to have voted, and 3.9 points more likely to call themselves liberal. Dropout tracked education much more steeply than in the GSS's 2006–2014 panels.
+3. **The best predictor is not the best weight.** Random forests and gradient boosting ranked dropout best but removed less bias than penalized logistic regression. Choosing an attrition model by predictive accuracy alone would pick the wrong one.
+4. **Better weights change 2020 estimates but not estimates of change.** Relative to NORC's weight, they lower the 2020 share who say most people can be trusted by 3.6 points and the share with a great deal of confidence in science by 3.1 points. Within-person change from baseline to 2020 barely moves under any weighting.
 
 ## Project structure
 
@@ -48,9 +50,9 @@ The full run takes 25-45 minutes on an 8-core laptop, most of it nested cross-va
 
 Davern, M., Bautista, R., Freese, J., Morgan, S. L., and Smith, T. W. (2021). General Social Survey 2016–2020 Panel, Release 1a [data file and codebook]. NORC at the University of Chicago. <https://gss.norc.org>
 
-Frankel, L. L., and Hillygus, D. S. (2014). Looking beyond demographics: Panel attrition in the ANES and GSS. *Political Analysis*, 22(3), 336–353.
-
 Fitzgerald, J., Gottschalk, P., and Moffitt, R. (1998). An analysis of sample attrition in panel data: The Michigan Panel Study of Income Dynamics. *Journal of Human Resources*, 33(2), 251–299.
+
+Frankel, L. L., and Hillygus, D. S. (2014). Looking beyond demographics: Panel attrition in the ANES and GSS. *Political Analysis*, 22(3), 336–353.
 
 Little, R. J. A., and Vartivarian, S. (2005). Does weighting for nonresponse increase the variance of survey means? *Survey Methodology*, 31(2), 161–168.
 
