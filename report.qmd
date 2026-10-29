@@ -67,11 +67,11 @@ best = "ipw_penalized_logit"
 
 ## Summary
 
-In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only `{python} pct(retention_overall, 0)` of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area. I could find no published analysis of who left this panel.
+In 2020 the General Social Survey (GSS), run by NORC at the University of Chicago, tried to reinterview people it had first interviewed in 2016 or 2018. Only `{python} pct(retention_overall, 0)` of eligible respondents took part. NORC's released panel weight adjusts for that loss only by geographic area. In this research note, I evaluate various methods for generating attrition weights and compare them to the weights NORC provided.
 
-I compare attrition weights from the standard logistic regression used in earlier GSS work to machine-learning methods (penalized regression, random forests, gradient boosting). I find penalized logistic regression produces weights that remove the most bias. Because the people who left the panel still have their full baseline interview in the data, the right answer is known for any question asked before anyone left, so I can check whether each set of weights makes the people who stayed look like everyone who started. Panel studies have long used this kind of check (Fitzgerald, Gottschalk, and Moffitt 1998); to my knowledge it has not been applied to this panel's weights.
+I compare attrition weights from the standard logistic regression used in earlier GSS work to machine-learning methods: penalized regression, random forests, and gradient boosting. I find penalized logistic regression produces weights that remove the most bias. Because the people who left the panel still have their full baseline interview in the data, the right answer is known for any question asked before anyone left, so I can check whether each set of weights makes the people who stayed look like everyone who started. Panel studies have long used this kind of check (Fitzgerald, Gottschalk, and Moffitt 1998); to my knowledge it has not been applied to this panel's weights. These findings stand to benefit GSS users whose questions involve answers that were affected by the panel's attrition patterns.
 
-**Weights from a model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth.**
+**Key Finding: Weights from a machine learning model that uses the whole questionnaire cut the attrition bias roughly in half; NORC's released weight cuts it by about a tenth.**
 
 1. **Model-based weights beat both NORC's weight and demographic raking.** Across 15 benchmark measures held out of every model, NORC's weight closes `{python} pct(cut("norc"))` of the gap, raking on demographics `{python} pct(cut("raking"))`, and weights from the five attrition models `{python} pct(min(cut(s) for s in models_ipw))`–`{python} pct(max(cut(s) for s in models_ipw))`.
 2. **The panel kept more voters, more trusting people, and more liberals.** At baseline, the people who stayed were `{python} num(gap("trusts_people"))` points more likely than all eligible respondents to say most people can be trusted, `{python} num(gap("voted"))` points more likely to have voted, and `{python} num(gap("liberal"))` points more likely to call themselves liberal. Dropout tracked education much more steeply than in the GSS's 2006–2014 panels.
@@ -89,9 +89,9 @@ The 2016–2020 GSS Panel reinterviewed every 2018 respondent and a random three
 
 Who came back depended strongly on socioeconomic status and on how the baseline interview went. Among respondents without a high school diploma, `{python} pct(rate("Education", "Less than high school"))` were reinterviewed; among those with a graduate degree, `{python} pct(rate("Education", "Graduate"))`. Respondents who had voted in the previous presidential election came back at `{python} pct(rate("Voted in last presidential election", "Voted"))`, nonvoters at `{python} pct(rate("Voted in last presidential election", "Did not vote"))`. Respondents whom the baseline interviewer rated "friendly and interested" came back at `{python} pct(rate("Interviewer-rated attitude", "Friendly and interested"))`, those rated restless or hostile at `{python} pct(rate("Interviewer-rated attitude", "Restless or hostile"))`.
 
-![](output/figures/retention_by_group.png){width=85%}
+![](output/figures/retention_by_group.png){width=62%}
 
-The education gradient is much steeper than in the GSS's 2006–2014 face-to-face panels: a graduate degree lowered the chance of dropping out by `{python} num(-then.loc[("Education", "Graduate"), "gap_2016_2020"])` points relative to a high school diploma, against `{python} num(-then.loc[("Education", "Graduate"), "gap_2006_2014"])` points then (Morgan and Lee 2020). The designs differ (one web-first reinterview during the pandemic versus two face-to-face reinterviews), so the comparison describes the panels rather than isolating a cause.
+The education gradient is much steeper than in the GSS's 2006–2014 face-to-face panels: a graduate degree lowered the chance of dropping out by `{python} num(-then.loc[("Education", "Graduate"), "gap_2016_2020"])` points relative to a high school diploma, against `{python} num(-then.loc[("Education", "Graduate"), "gap_2006_2014"])` points then (Morgan and Lee 2020).
 
 ## Predicting who left
 
@@ -125,7 +125,7 @@ Without attrition adjustment, the panel misses the baseline values by `{python} 
 
 Neither ranking nor calibration decided which weights worked. Gradient boosting predicted dropout best and was best calibrated, yet removed less bias (`{python} num(bias.loc["ipw_boosting", "mean_abs_gap"], 2)`) than the penalized regression; adding principal components barely improved the literature model's predictions but cut its remaining bias from `{python} num(bias.loc["ipw_logit_literature", "mean_abs_gap"], 2)` to `{python} num(bias.loc["ipw_logit_pca", "mean_abs_gap"], 2)`. Weights reduce bias only to the extent that the attrition model captures characteristics related to the outcomes being estimated (Little and Vartivarian 2005). Here those are political and social attitudes, which the questionnaire-wide models see and the demographic and paradata predictors largely do not. Pew Research Center reached a similar conclusion when weighting online opt-in samples: adding political variables to demographic weighting reduced bias far more than any more complex statistical method did (Mercer, Lau, and Kennedy 2018).
 
-![](output/figures/benchmark_gaps.png){width=85%}
+![](output/figures/benchmark_gaps.png){width=70%}
 
 ## What changes in 2020
 
